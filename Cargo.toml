@@ -1,19 +1,52 @@
 [package]
-name = "hear_pods"
+name = "hear_buds"
 version = "0.1.0"
 authors = ["Frans Henskens <fhenskens@yahoo.com>"]
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[lib]
+name = "hear_buds_dsp"
+path = "src/lib.rs"
+crate-type = ["staticlib", "rlib"]
+
 [dependencies]
-dioxus = { version = "0.7.1", features = ["router"] }
+dioxus = { version = "0.7.1", default-features = false, optional = true }
+cpal = { version = "0.15.3", optional = true }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.36.0", features = ["time"] }
+rustfft = "6.4.1"
+
+[target.'cfg(target_os = "android")'.dependencies]
+jni = "0.21.1"
+ndk-context = "0.1"
+trombone-audio = "0.1.0"
 
 [features]
-default = ["desktop"]
+default = []
+app = [
+    "dioxus",
+    "dioxus/launch",
+    "dioxus/macro",
+    "dioxus/html",
+    "dioxus/signals",
+    "dioxus/hooks",
+    "dioxus/asset",
+    "dioxus/document",
+]
 # The feature that are only required for the web = ["dioxus/web"] build target should be optional and only enabled in the web = ["dioxus/web"] feature
-web = ["dioxus/web"]
+web = ["app", "dioxus/web"]
 # The feature that are only required for the desktop = ["dioxus/desktop"] build target should be optional and only enabled in the desktop = ["dioxus/desktop"] feature
-desktop = ["dioxus/desktop"]
+desktop = ["app", "dioxus/desktop", "cpal"]
 # The feature that are only required for the mobile = ["dioxus/mobile"] build target should be optional and only enabled in the mobile = ["dioxus/mobile"] feature
-mobile = ["dioxus/mobile"]
+mobile = ["app", "dioxus/mobile"]
+
+[profile.release]
+opt-level = "s"
+lto = "thin"
+codegen-units = 1
+panic = "abort"
+strip = "symbols"
+incremental = false

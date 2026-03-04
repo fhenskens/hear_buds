@@ -3,7 +3,7 @@
 [web.app]
 
 # HTML title tag content
-title = "hear_pods"
+title = "hear_buds"
 
 # include `assets` in web platform
 [web.resource]
@@ -19,3 +19,11 @@ script = []
 # Javascript code file
 # serve: [dev-server] only
 script = []
+
+[bundle]
+# Unique reverse-domain ID used for app bundles (including Android applicationId).
+identifier = "com.fhenskens.hearbuds"
+publisher = "fhenskens"
+category = "Utility"
+short_description = "Real-time hearing assist app with low-latency DSP."
+

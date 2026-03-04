@@ -1,0 +1,22 @@
+# Use LF in the repo for all text files by default.
+* text=auto eol=lf
+
+# Keep shell scripts LF (required for shebang on Unix/WSL).
+*.sh text eol=lf
+
+# Keep Windows command scripts CRLF for best native Windows compatibility.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Common binary assets.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.apk binary
+*.aab binary
+*.so binary
+*.dll binary
+*.exe binary

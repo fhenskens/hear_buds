@@ -1,0 +1,36 @@
+Device Test Checklist (HearBuds)
+
+1) Permissions
+- Launch app on Android device.
+- Verify microphone permission prompt appears.
+- Accept permission and confirm UI unlocks.
+
+2) DSP Pipeline
+- Run calibration, then toggle DSP on.
+- Confirm you can hear mic audio routed to earbuds.
+- Toggle DSP off; audio should stop.
+- If Bluetooth headset/earbuds are connected, verify the mic is used (not handset).
+
+3) Calibration
+- Start calibration in a quiet room.
+- Verify tone levels change after “Heard it” / “Didn’t hear”.
+- Complete calibration and confirm profile is marked Ready.
+- Verify thresholds list appears in Advanced mode.
+
+4) Noise Reduction
+- Enable noise reduction, adjust strength.
+- Capture room noise and verify clarity improves in steady noise.
+
+5) Safety
+- Enable limiter and safe mode in Advanced.
+- Confirm no sharp spikes when loud input occurs.
+- Verify safe mode caps overall loudness.
+
+6) Profiles
+- Save current profile and reload it after app restart.
+- Switch between profiles and confirm settings apply.
+
+7) Performance
+- Verify callback ms remains stable.
+- Confirm Input meter responds to sound.
+
