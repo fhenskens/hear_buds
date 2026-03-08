@@ -1,0 +1,12 @@
+HearBuds
+
+This product uses third-party open source libraries. See below for attributions:
+
+- Dioxus (Apache-2.0 / MIT dual license)
+- Oboe (Apache-2.0)
+- serde (MIT / Apache-2.0)
+- tokio (MIT)
+- jni (MIT / Apache-2.0)
+- ndk-context (MIT / Apache-2.0)
+- cmake (MIT / Apache-2.0)
+
