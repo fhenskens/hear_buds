@@ -97,6 +97,25 @@ These scripts:
 Optional:
 - Override the launch app ID with `APP_ID` (bash) or `-AppId` (PowerShell).
 
+## Play Store Release Bundle (AAB)
+
+Google Play requires an Android App Bundle (`.aab`) for normal release uploads.
+
+Windows:
+```powershell
+.\scripts\build_android_bundle.ps1
+```
+
+macOS / Linux:
+```bash
+./scripts/build_android_bundle.sh
+```
+
+These scripts:
+- Build Android release output through Dioxus.
+- Run `bundleRelease` in the generated Gradle project.
+- Print the final `.aab` path.
+
 ### Smallest APK build target
 
 Use the `minsize` profile.
@@ -154,6 +173,12 @@ adb install -r /path/to/your.apk
 - On-device latency and CPU profiling.
 - Solidify Bluetooth input device routing.
 - Ensure smooth operation when the screen is locked
+
+## Publish Readiness
+
+- Checklist: [docs/release/PUBLISH_CHECKLIST.md](docs/release/PUBLISH_CHECKLIST.md)
+- Release process: [docs/release/RELEASE_RUNBOOK.md](docs/release/RELEASE_RUNBOOK.md)
+- Privacy policy draft: [docs/release/PRIVACY_POLICY_TEMPLATE.md](docs/release/PRIVACY_POLICY_TEMPLATE.md)
 
 ## Contributing
 Issues and pull requests are welcome.

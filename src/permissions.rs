@@ -10,7 +10,9 @@ fn clear_jni_exception(env: &mut jni::JNIEnv<'_>) {
 }
 
 #[cfg(target_os = "android")]
-fn with_android_context<T>(f: impl FnOnce(&mut jni::JNIEnv<'_>, jni::objects::JObject<'_>) -> T) -> Option<T> {
+fn with_android_context<T>(
+    f: impl FnOnce(&mut jni::JNIEnv<'_>, jni::objects::JObject<'_>) -> T,
+) -> Option<T> {
     use jni::objects::JObject;
     use jni::sys::jobject;
     use jni::JavaVM;
