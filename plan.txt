@@ -1,0 +1,62 @@
+Implementation Plan (HearBuds)
+
+Legend: [x] completed, [ ] pending
+
+1) Core UI + State
+[x] Dioxus app shell and Home screen layout.
+[x] DSP on/off button gated by profile readiness.
+[x] Beep sweep UI (start/pause, replay, heard/not heard, progress).
+[x] Noise-cancel toggle control.
+[x] Equalizer display with lock/unlock edit mode.
+[x] Settings model with EQ bands and sweep results.
+[x] Settings persistence (non-wasm) to hear_buds_settings.json.
+
+2) Calibration Logic
+[x] Sweep result -> EQ derivation (linear interpolation + smoothing).
+[x] Automate sweep playback/advance timing (optional enhancement).
+[x] Threshold-seeking calibration per band (adaptive staircase).
+[x] Display per-band thresholds after calibration.
+[x] Guided test flow with automatic step transitions.
+[x] Tune threshold -> EQ mapping with real-world testing.
+
+3) Android Permissions
+[ ] Runtime microphone permission request and state tracking (Android 13+).
+[ ] Reflect real permission state in UI gating.
+
+4) Audio Pipeline (Performance-Critical)
+[x] Android native mic input -> DSP -> output using Rust/Oboe bridge.
+[x] Start/stop pipeline tied to DSP toggle.
+[x] EQ band gains applied in native DSP.
+[x] Noise reduction toggle hooked to native DSP.
+[x] Noise reduction strength control wired to DSP core.
+[x] Noise profile capture hook (adaptive noise floor reset).
+[x] Multi-band compression for speech clarity.
+[x] Safety limiter and safe mode.
+[x] Feedback suppression (lightweight).
+[x] Profile save/load.
+
+5) Sweep Playback (Native)
+[x] Native sweep tone generator scaffold (Oboe output stream).
+[ ] Integrate sweep tone with DSP pipeline (shared output path).
+
+6) Bluetooth Input Routing
+[ ] Prefer Bluetooth headset/earbud microphones when present.
+[ ] Validate routing on real hardware and fall back to handset mic.
+
+6) Rust-First Native Focus
+[ ] Maximize Rust native components for performance (document boundaries where C++ is required).
+[x] Rust DSP core exposed via C ABI and linked into Android native pipeline.
+[x] Build helper to produce Rust DSP staticlib for Android.
+
+7) Validation
+[ ] Smoke test on Android device: permission, sweep tone, DSP toggle, EQ updates.
+[ ] Latency/CPU profiling targets established.
+
+8) Android Build Workflow
+[x] Cross-platform build wrapper to build Rust DSP and run `dx build --platform android`.
+
+Next Steps (Session Notes)
+[ ] Make Bluetooth mic routing reliable via AudioManager routing APIs (setCommunicationDevice / startBluetoothSco fallback).
+[ ] Add UI indicator for active input device (Bluetooth vs handset) and log routing decision.
+[ ] Validate permission flow + routing on Pixel 8 Pro with earbuds attached.
+

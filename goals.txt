@@ -1,0 +1,18 @@
+The goal of this project is to write an android app in dioxus which converts regular ear-buds into poor man's hearing-aids, using dioxus.
+
+Ideally there will also be a mode to reduce background noise to help the person focus on a conversation nearby.
+
+It will listen to the mic, apply some DSP, and repeat it back through the speakers.
+
+As much as possible, it will use rust to create native binaries for performance. Performance is a high priority for a hearing aid.
+
+Where pragmatic and it would improve performance, prefer Rust native code.
+
+It will need:
+ - A button to turn the DSP on and off, when it is appropriately configured
+ - A hearing test that finds per-band thresholds (adaptive sweep) to identify appropriate DSP settings
+ - A checkbox to toggle noise cancellation.
+ - An equaliser (read only unless the user hits a UI element to allow it to be modified) which displays the current hearing correction settings. When in edit mode, the user can tweak the values as they see fit.
+ - Safety controls to prevent feedback spikes and excessive output.
+ - Ability to save and load multiple profiles.
+ - Default to Bluetooth headset/earbud microphones when available, falling back to the phone mic.

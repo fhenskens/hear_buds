@@ -24,12 +24,6 @@ android/local.properties
 hear_buds_settings.json
 hear_pods_settings.json
 
-# Local planning/session notes (keep private by default)
-goals.txt
-plan.txt
-SESSION_MEMORY.md
-AGENTS.md
-
 # IDE/editor settings
 .idea/
 .vscode/*
