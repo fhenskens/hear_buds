@@ -11,7 +11,7 @@ This file explains how to contribute.
 ## Setup
 
 ```bash
-git clone https://github.com/fhenskens/hear_buds
+git clone git@github.com:fhenskens/hear_buds.git
 cd hear_buds
 cargo check --no-default-features --features desktop
 ```
